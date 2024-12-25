@@ -1,0 +1,24 @@
+trigger:
+  - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  webappName: 'flasksklearn-app'
+  resourceGroup: 'AzureDevOps'
+  location: 'eastus'
+
+steps:
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.9'
+- script: |
+    pip install -r requirements.txt
+    pytest
+  displayName: 'Run Tests'
+
+- script: |
+    az login --service-principal -u $(azureServicePrincipalId) -p $(azureServicePrincipalPassword) --tenant $(azureTenantId)
+    az webapp up --name $(webappName) --resource-group $(resourceGroup) --location $(location)
+  displayName: 'Deploy to Azure'

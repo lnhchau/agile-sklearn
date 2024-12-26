@@ -13,7 +13,7 @@ LOG.setLevel(logging.INFO)
 def scale(payload):
     """Scales Payload"""
 
-    LOG.info("Scaling Payload: %s payload")
+    LOG.info(f"Scaling Payload: {payload}")
     scaler = StandardScaler().fit(payload)
     scaled_adhoc_predict = scaler.transform(payload)
     return scaled_adhoc_predict
@@ -21,6 +21,7 @@ def scale(payload):
 @app.route("/")
 def home():
     html = "<h3>Sklearn Prediction Home</h3>"
+    # html = "<h2> Sklearn Prediction Home APP - REST API</h2>"    
     return html.format(format)
 
 # TO DO:  Log out the prediction value
@@ -33,13 +34,13 @@ def predict():
         # clf = joblib.load("./Housing_price_model/StochasticGradientDescent.joblib")
         # clf = joblib.load("./Housing_price_model/GradientBoostingRegressor.joblib")
     except:
-        LOG.info("JSON payload: %s json_payload")
+        LOG.info(f"JSON payload: {json_payload}")
         return "Model not loaded"
 
     json_payload = request.json
-    LOG.info("JSON payload: %s json_payload")
+    LOG.info(f"JSON payload: {json_payload}")
     inference_payload = pd.DataFrame(json_payload)
-    LOG.info("inference payload DataFrame: %s inference_payload")
+    LOG.info(f"inference payload DataFrame: {inference_payload}")
     scaled_payload = scale(inference_payload)
     prediction = list(clf.predict(scaled_payload))
     return jsonify({'prediction': prediction})

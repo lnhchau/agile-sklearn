@@ -18,7 +18,7 @@ def scale(payload):
         scaled_adhoc_predict = scaler.transform(payload)
         return scaled_adhoc_predict
     except ValueError as e:  # Catch only ValueErrors for invalid input data
-        LOG.error("Error while scaling payload: %s", e)
+        LOG.info("Error while scaling payload: %s", e)
         raise
 
 @app.route("/")
@@ -36,10 +36,10 @@ def predict():
         # clf = joblib.load("./Housing_price_model/StochasticGradientDescent.joblib")
         # clf = joblib.load("./Housing_price_model/GradientBoostingRegressor.joblib")
     except FileNotFoundError as e:
-        LOG.error("Model file not found: %s", e)
+        LOG.info("Model file not found: %s", e)
         return "Model not loaded"
     except Exception as e:
-        LOG.error("An error occurred while loading the model: %s", e)
+        LOG.info("An error occurred while loading the model: %s", e)
         return "Model not loaded"
 
 

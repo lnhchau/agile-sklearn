@@ -14,7 +14,7 @@ variables:
   webAppName: 'flasksklearn-app'
 
   # Agent VM image name
-  vmImageName: 'Ubuntu-18.04'
+  vmImageName: 'Ubuntu-latest'
 
   # Environment name
   environmentName: 'flasksklearn-app'

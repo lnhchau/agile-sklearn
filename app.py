@@ -33,23 +33,33 @@ def predict():
     # Performs an sklearn prediction
     try:
         clf = joblib.load("./Housing_price_model/LinearRegression.joblib")
-        # clf = joblib.load("./Housing_price_model/StochasticGradientDescent.joblib")
-        # clf = joblib.load("./Housing_price_model/GradientBoostingRegressor.joblib")
     except FileNotFoundError as e:
-        LOG.info("Model file not found: %s", e)
-        return "Model not loaded"
-    except:
-        LOG.info("An error occurred while loading the model")
-        return "Model not loaded"
+        LOG.error("Model file not found: %s", e)
+        return jsonify({"error": "Model not loaded"}), 500
+    except joblib.JoblibException as e:  # Catch joblib-specific errors
+        LOG.error("An error occurred while loading the model: %s", e)
+        return jsonify({"error": "Error while loading model"}), 500
+    except Exception as e:  # General exceptions for unexpected issues
+        LOG.error("Unexpected error: %s", e)
+        return jsonify({"error": "Unexpected error while loading model"}), 500
 
-
-    json_payload = request.json
-    LOG.info(f"JSON payload: {json_payload}")
-    inference_payload = pd.DataFrame(json_payload)
-    LOG.info(f"inference payload DataFrame: {inference_payload}")
-    scaled_payload = scale(inference_payload)
-    prediction = list(clf.predict(scaled_payload))
-    return jsonify({'prediction': prediction})
-
+    try:
+        json_payload = request.json
+        LOG.info("JSON payload: %s", json_payload)
+        inference_payload = pd.DataFrame(json_payload)
+        LOG.info("Inference payload DataFrame: %s", inference_payload)
+        scaled_payload = scale(inference_payload)
+        prediction = list(clf.predict(scaled_payload))
+        return jsonify({'prediction': prediction})
+    except KeyError as e:
+        LOG.error("KeyError: %s", e)
+        return jsonify({"error": "Invalid input data"}), 400
+    except ValueError as e:
+        LOG.error("ValueError: %s", e)
+        return jsonify({"error": "Invalid data format"}), 400
+    except Exception as e:
+        LOG.error("Unexpected error during prediction: %s", e)
+        return jsonify({"error": "Unexpected error during prediction"}), 500
+    
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000, debug=True)

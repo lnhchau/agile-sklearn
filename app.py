@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from flask.logging import create_logger
 import logging
+import traceback
 
 import pandas as pd
 import joblib
@@ -39,7 +40,7 @@ def predict():
         LOG.info("Model file not found: %s", e)
         return "Model not loaded"
     except:
-        LOG.info("An error occurred while loading the model")
+        traceback.print_exc()
         return "Model not loaded"
 
 

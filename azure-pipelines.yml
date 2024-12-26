@@ -13,8 +13,8 @@ variables:
   # Web app name
   webAppName: 'flasksklearn-app'
 
-  # Agent VM image name
-  vmImageName: 'Ubuntu-latest'
+  # Agent pool name
+  agentPoolName: 'AgentPool'
 
   # Environment name
   environmentName: 'flasksklearn-app'
@@ -31,7 +31,7 @@ stages:
   jobs:
   - job: BuildJob
     pool:
-      vmImage: $(vmImageName)
+      name: $(agentPoolName)
     steps:
     - task: UsePythonVersion@0
       inputs:
@@ -64,7 +64,7 @@ stages:
         archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
         replaceExistingArchive: true
 
-    - upload: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
+    - publish: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
       displayName: 'Publish Build Artifact'
       artifact: drop
 
@@ -76,7 +76,7 @@ stages:
   - deployment: DeploymentJob
     displayName: Deploy Application
     pool:
-      vmImage: $(vmImageName)
+      name: $(agentPoolName)
     environment: $(environmentName)
     strategy:
       runOnce:

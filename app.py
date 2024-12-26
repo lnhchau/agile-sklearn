@@ -38,8 +38,8 @@ def predict():
     except FileNotFoundError as e:
         LOG.info("Model file not found: %s", e)
         return "Model not loaded"
-    except Exception as e:
-        LOG.info("An error occurred while loading the model: %s", e)
+    except:
+        LOG.info("An error occurred while loading the model")
         return "Model not loaded"
 
 

@@ -63,8 +63,6 @@ cat ~/.ssh/id_rsa.pub
    | `requirements.txt` | Lists Python dependencies.                 |
    | `hello.py`         | Basic Python application.                  |
    | `test_hello.py`    | Unit tests for the application.            |
-
-
 5. **Set up Virtual Environment** :
 
 ```
@@ -103,12 +101,15 @@ cat ~/.ssh/id_rsa.pub
 * Navigate to  **Project Settings > Service Connections** .
 * Create a new **Azure Resource Manager** connection named `AZServiceConnection`.
 
-3. **Deploy Web App to Azure:**
+3. 
+4. **Deploy Web App to Azure:**
 
    ```
    az webapp up -n <webapp-name> --location southcentralus --sku B1
    ```
-4. **Configure Azure DevOps Pipeline** :
+
+   ![1735219593744](image/README/1735219593744.png)
+5. **Configure Azure DevOps Pipeline** :
 
 * Go to  **Pipelines > New Pipeline > GitHub > Select Your Repo** .
 * Choose `main` branch and select the `azure-pipelines.yml` file.
@@ -132,7 +133,9 @@ cat ~/.ssh/id_rsa.pub
   html = "<h2>Sklearn Prediction Home APP - RestAPI</h2>"
   ```
 
-- Commit and push changes to trigger CI/CD.
+- Commit and push changes to trigger CI/CD.![1735219641014](image/README/1735219641014.png)
+
+  ![1735219624998](image/README/1735219624998.png)
 
 3. **Load Testing** :
 
@@ -163,4 +166,4 @@ cat ~/.ssh/id_rsa.pub
 
 ## **YouTube Demo**
 
-* [Watch the Demo](https://youtu.be/)
+* [Watch the Demo](https://youtu.be/H4-i1gb3a9o)

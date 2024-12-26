@@ -1,7 +1,6 @@
 from flask import Flask, request, jsonify
 from flask.logging import create_logger
 import logging
-import traceback
 
 import pandas as pd
 import joblib
@@ -35,13 +34,12 @@ def predict():
     try:
         clf = joblib.load("./Housing_price_model/LinearRegression.joblib")
         # clf = joblib.load("./Housing_price_model/StochasticGradientDescent.joblib")
-        # clf = joblib.load("./Housing_price_model/GradientBoostingRegressor.joblib")
     except FileNotFoundError as e:
-        LOG.info("Model file not found: %s", e)
-        return "Model not loaded"
-    except Exception as e:
-        LOG.error("Unexpected error while loading model: %s", e)
-        return "Unexpected error occurred"
+        LOG.error("Model file not found: %s", e)
+        return jsonify({"error": "Model not loaded"}), 500
+    except OSError as e:
+        LOG.error("Error accessing the model file: %s", e)
+        return jsonify({"error": "Model not accessible"}), 500
 
     json_payload = request.json
     LOG.info(f"JSON payload: {json_payload}")

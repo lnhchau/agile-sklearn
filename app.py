@@ -12,11 +12,14 @@ LOG.setLevel(logging.INFO)
 
 def scale(payload):
     """Scales Payload"""
-
-    LOG.info(f"Scaling Payload: {payload}")
-    scaler = StandardScaler().fit(payload)
-    scaled_adhoc_predict = scaler.transform(payload)
-    return scaled_adhoc_predict
+    try:
+        LOG.info("Scaling Payload: %s", payload)
+        scaler = StandardScaler().fit(payload)
+        scaled_adhoc_predict = scaler.transform(payload)
+        return scaled_adhoc_predict
+    except ValueError as e:  # Catch only ValueErrors for invalid input data
+        LOG.error("Error while scaling payload: %s", e)
+        raise
 
 @app.route("/")
 def home():

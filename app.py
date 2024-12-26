@@ -39,10 +39,9 @@ def predict():
     except FileNotFoundError as e:
         LOG.info("Model file not found: %s", e)
         return "Model not loaded"
-    except:
-        traceback.print_exc()
-        return "Model not loaded"
-
+    except Exception as e:
+        LOG.error("Unexpected error while loading model: %s", e)
+        return "Unexpected error occurred"
 
     json_payload = request.json
     LOG.info(f"JSON payload: {json_payload}")

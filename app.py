@@ -29,13 +29,16 @@ def home():
 def predict():
     # Performs an sklearn prediction
     try:
-        # Load pretrained model as clf. Try any one model. 
         clf = joblib.load("./Housing_price_model/LinearRegression.joblib")
         # clf = joblib.load("./Housing_price_model/StochasticGradientDescent.joblib")
         # clf = joblib.load("./Housing_price_model/GradientBoostingRegressor.joblib")
-    except:
-        LOG.info(f"JSON payload: {json_payload}")
+    except FileNotFoundError as e:
+        LOG.error("Model file not found: %s", e)
         return "Model not loaded"
+    except Exception as e:
+        LOG.error("An error occurred while loading the model: %s", e)
+        return "Model not loaded"
+
 
     json_payload = request.json
     LOG.info(f"JSON payload: {json_payload}")

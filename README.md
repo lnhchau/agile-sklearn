@@ -5,6 +5,7 @@ In this project, you will create a GitHub repository from scratch and set up sca
 * **GitHub Actions** for CI.
 * **Azure Pipelines** for CD to Azure App Service.
 * Supplementary files like `Makefile`, `requirements.txt`, and Python application code for testing, installation, and deployment.
+* ![Python application test with GitHub Actions](https://github.com/lnhchau/agile-sklearn/actions/workflows/pythonapp.yml/badge.svg)
 
 ---
 
@@ -45,6 +46,8 @@ ssh-keygen -t rsa
 cat ~/.ssh/id_rsa.pub
 ```
 
+![1735279940367](image/README/1735279940367.png)
+
 - Add the `id_rsa.pub` key to your GitHub repository’s SSH settings. Clone the repository using:
   ```
   git clone https://github.com/lnhchau/agile-sklearn.git
@@ -55,8 +58,6 @@ cat ~/.ssh/id_rsa.pub
    ```
    git checkout hello-test-ci
    ```
-
-   ![1735270967841](https://file+.vscode-resource.vscode-cdn.net/u%3A/Day%20ta%20sai%20an/Udacity-DE-AWS-Azure/Azure/04_cloud_devops_azure/Uda_devops_2/flask-sklearn/image/README/1735270967841.png)
 4. **Scaffold the Project** :
 
    | File                 | Purpose                                    |
@@ -82,13 +83,11 @@ cat ~/.ssh/id_rsa.pub
 
 - This will install dependencies, lint, and test the application.
 
-  ![1735271512040](https://file+.vscode-resource.vscode-cdn.net/u%3A/Day%20ta%20sai%20an/Udacity-DE-AWS-Azure/Azure/04_cloud_devops_azure/Uda_devops_2/flask-sklearn/image/README/1735271512040.png)
+  ![1735279977467](image/README/1735279977467.png)
 
 7. **Enable GitHub Actions** :
 
 * Open `.github/workflows/pythonapp.yml` and make a minor edit to trigger GitHub Actions.
-
-  ![1735271582567](https://file+.vscode-resource.vscode-cdn.net/u%3A/Day%20ta%20sai%20an/Udacity-DE-AWS-Azure/Azure/04_cloud_devops_azure/Uda_devops_2/flask-sklearn/image/README/1735271582567.png)
 
 ## **Part 2: CI/CD Pipeline with Azure DevOps**
 
@@ -107,7 +106,7 @@ cat ~/.ssh/id_rsa.pub
 
 ![1735271693334](image/README/1735271693334.png)
 
-![1735271686912](https://file+.vscode-resource.vscode-cdn.net/u%3A/Day%20ta%20sai%20an/Udacity-DE-AWS-Azure/Azure/04_cloud_devops_azure/Uda_devops_2/flask-sklearn/image/README/1735271686912.png)![1735271705179](image/README/1735271705179.png)![1735271745972](image/README/1735271745972.png)
+![1735280035752](image/README/1735280035752.png)![1735271705179](image/README/1735271705179.png)![1735271745972](image/README/1735271745972.png)
 
 4. **Deploy Web App to Azure:**
 
@@ -142,7 +141,7 @@ cat ~/.ssh/id_rsa.pub
 
 - Commit and push changes to trigger CI/CD.
 
-  ![1735219624998](image/README/1735219624998.png)![1735219641014](https://file+.vscode-resource.vscode-cdn.net/u%3A/Day%20ta%20sai%20an/Udacity-DE-AWS-Azure/Azure/04_cloud_devops_azure/Uda_devops_2/flask-sklearn/image/README/1735219641014.png)![1735272877238](image/README/1735272877238.png)
+  ![1735219624998](image/README/1735219624998.png)![1735280124510](image/README/1735280124510.png)![1735280124510](image/README/1735280124510.png)![1735272877238](image/README/1735272877238.png)
 
 3. **Load Testing** :
 

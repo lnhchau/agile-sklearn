@@ -50,7 +50,7 @@ cat ~/.ssh/id_rsa.pub
   git clone https://github.com/lnhchau/agile-sklearn.git
   ```
 
-3. **Switch to the `hello-github-actions` branch** :
+3. **Switch to the** hello-test-ci **branch** :
 
    ```
    git checkout hello-test-ci
@@ -81,15 +81,14 @@ cat ~/.ssh/id_rsa.pub
   ```
 
 - This will install dependencies, lint, and test the application.
-- Screenshot: CI OUTPUT
+
+  ![1735271512040](https://file+.vscode-resource.vscode-cdn.net/u%3A/Day%20ta%20sai%20an/Udacity-DE-AWS-Azure/Azure/04_cloud_devops_azure/Uda_devops_2/flask-sklearn/image/README/1735271512040.png)
 
 7. **Enable GitHub Actions** :
 
 * Open `.github/workflows/pythonapp.yml` and make a minor edit to trigger GitHub Actions.
-* Screenshot: GitHub Actions
 
-  ![1735271582567](image/README/1735271582567.png)
-  ![1735271512040](image/README/1735271512040.png)
+  ![1735271582567](https://file+.vscode-resource.vscode-cdn.net/u%3A/Day%20ta%20sai%20an/Udacity-DE-AWS-Azure/Azure/04_cloud_devops_azure/Uda_devops_2/flask-sklearn/image/README/1735271582567.png)
 
 ## **Part 2: CI/CD Pipeline with Azure DevOps**
 
@@ -142,7 +141,6 @@ cat ~/.ssh/id_rsa.pub
   ```
 
 - Commit and push changes to trigger CI/CD.
-
 
   ![1735219624998](image/README/1735219624998.png)![1735219641014](https://file+.vscode-resource.vscode-cdn.net/u%3A/Day%20ta%20sai%20an/Udacity-DE-AWS-Azure/Azure/04_cloud_devops_azure/Uda_devops_2/flask-sklearn/image/README/1735219641014.png)![1735272877238](image/README/1735272877238.png)
 

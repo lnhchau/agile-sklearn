@@ -49,9 +49,12 @@ cat ~/.ssh/id_rsa.pub
 ![1735279940367](image/README/1735279940367.png)
 
 - Add the `id_rsa.pub` key to your GitHub repository’s SSH settings. Clone the repository using:
+
   ```
   git clone https://github.com/lnhchau/agile-sklearn.git
   ```
+
+  ![1735282616615](image/README/1735282616615.png)
 
 3. **Switch to the** hello-test-ci **branch** :
 

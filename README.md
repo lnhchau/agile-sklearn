@@ -28,7 +28,7 @@ In this project, you will create a GitHub repository from scratch and set up sca
 
 ### **Architectural Diagram**
 
-![CI Diagram](screenshots\ci-diagram.png)
+![1735267519226](image/README/1735267519226.png)
 
 ---
 
@@ -47,14 +47,16 @@ cat ~/.ssh/id_rsa.pub
 
 - Add the `id_rsa.pub` key to your GitHub repository’s SSH settings. Clone the repository using:
   ```
-  git clone git@github.com:<your-repo-path>.git
+  git clone https://github.com/lnhchau/agile-sklearn.git
   ```
 
 3. **Switch to the `hello-github-actions` branch** :
 
    ```
-   git checkout hello-github-actions
+   git checkout hello-test-ci
    ```
+
+   ![1735270967841](https://file+.vscode-resource.vscode-cdn.net/u%3A/Day%20ta%20sai%20an/Udacity-DE-AWS-Azure/Azure/04_cloud_devops_azure/Uda_devops_2/flask-sklearn/image/README/1735270967841.png)
 4. **Scaffold the Project** :
 
    | File                 | Purpose                                    |
@@ -86,11 +88,14 @@ cat ~/.ssh/id_rsa.pub
 * Open `.github/workflows/pythonapp.yml` and make a minor edit to trigger GitHub Actions.
 * Screenshot: GitHub Actions
 
+  ![1735271582567](image/README/1735271582567.png)
+  ![1735271512040](image/README/1735271512040.png)
+
 ## **Part 2: CI/CD Pipeline with Azure DevOps**
 
 ### **Architectural Diagram**
 
-![CD Diagram](screenshots\cd-diagram.png)
+![1735267873328](image/README/1735267873328.png)
 
 1. **Create Azure DevOps Project:**
 
@@ -101,7 +106,10 @@ cat ~/.ssh/id_rsa.pub
 * Navigate to  **Project Settings > Service Connections** .
 * Create a new **Azure Resource Manager** connection named `AZServiceConnection`.
 
-3. 
+![1735271693334](image/README/1735271693334.png)
+
+![1735271686912](https://file+.vscode-resource.vscode-cdn.net/u%3A/Day%20ta%20sai%20an/Udacity-DE-AWS-Azure/Azure/04_cloud_devops_azure/Uda_devops_2/flask-sklearn/image/README/1735271686912.png)![1735271705179](image/README/1735271705179.png)![1735271745972](image/README/1735271745972.png)
+
 4. **Deploy Web App to Azure:**
 
    ```
@@ -133,9 +141,10 @@ cat ~/.ssh/id_rsa.pub
   html = "<h2>Sklearn Prediction Home APP - RestAPI</h2>"
   ```
 
-- Commit and push changes to trigger CI/CD.![1735219641014](image/README/1735219641014.png)
+- Commit and push changes to trigger CI/CD.
 
-  ![1735219624998](image/README/1735219624998.png)
+
+  ![1735219624998](image/README/1735219624998.png)![1735219641014](https://file+.vscode-resource.vscode-cdn.net/u%3A/Day%20ta%20sai%20an/Udacity-DE-AWS-Azure/Azure/04_cloud_devops_azure/Uda_devops_2/flask-sklearn/image/README/1735219641014.png)![1735272877238](image/README/1735272877238.png)
 
 3. **Load Testing** :
 
@@ -145,6 +154,10 @@ cat ~/.ssh/id_rsa.pub
   ```
 
 - Open Locust UI at `http://localhost:8089/` to monitor performance.
+
+![1735271856298](image/README/1735271856298.png)
+
+![1735271863534](image/README/1735271863534.png)
 
 ---
 
